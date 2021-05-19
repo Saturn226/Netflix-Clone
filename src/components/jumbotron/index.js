@@ -1,31 +1,42 @@
-import React from 'react'
-import {Inner, Item, Container, Title, SubTitle, Image, Pane } from './styles/jumbotron'
-export default function Jumbotron({children, direction="row", ...restProps}){
-    return(
-        <Item>
-            <Inner  direction={direction}>
-            {children}
-            </Inner>
-        </Item>
-    )
-} 
+import React from 'react';
+import {
+  Inner,
+  Item,
+  Container,
+  Title,
+  SubTitle,
+  Image,
+  Pane,
+} from './styles/jumbotron';
 
-Jumbotron.Container = function JumbotronContainer({children, ...restProps}){
-    return <Container {...restProps}>{children}</Container>
-} 
-
-Jumbotron.Title = function JumbotronTitle({children, ...restProps}){
-    return <Title {...restProps}>{children}</Title>
+export default function Jumbotron({
+  children,
+  direction = 'row',
+  ...restProps
+}) {
+  return (
+    <Item>
+      <Inner direction={direction}>{children}</Inner>
+    </Item>
+  );
 }
 
-Jumbotron.SubTitle = function JumbotronSubTitle({children, ...restProps}){
-    return <SubTitle {...restProps}>{children}</SubTitle>
-}
+Jumbotron.Container = function JumbotronContainer({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
+};
 
-Jumbotron.Image = function JumbotronImage({children, ...restProps}){
-    return <Image {...restProps}/>
-}
+Jumbotron.Title = function JumbotronTitle({ children, ...restProps }) {
+  return <Title {...restProps}>{children}</Title>;
+};
 
-Jumbotron.Pane = function JumbotronPane({children, ...restProps}){
-    return <Pane {...restProps}>{children}</Pane>
-}
+Jumbotron.SubTitle = function JumbotronSubTitle({ children, ...restProps }) {
+  return <SubTitle {...restProps}>{children}</SubTitle>;
+};
+
+Jumbotron.Image = function JumbotronImage({ children, ...restProps }) {
+  return <Image {...restProps} />;
+};
+
+Jumbotron.Pane = function JumbotronPane({ children, ...restProps }) {
+  return <Pane {...restProps}>{children}</Pane>;
+};
