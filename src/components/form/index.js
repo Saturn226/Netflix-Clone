@@ -24,12 +24,12 @@ Form.Base = function FormBase({ children, ...restProps }) {
   return <Base {...restProps}>{children}</Base>;
 };
 
-Form.Submit = function FormSubmit({ ...restProps }) {
-  return <Submit {...restProps} />;
+Form.Submit = function FormSubmit({ children, ...restProps }) {
+  return <Submit {...restProps}>{children}</Submit>;
 };
 
 Form.Link = function FormLink({ children, ...restProps }) {
-  return <Link></Link>;
+  return <Link {...restProps}>{children}</Link>;
 };
 
 Form.Text = function FormText({ children, ...restProps }) {
