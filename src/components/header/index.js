@@ -1,11 +1,22 @@
 import React from 'react';
-import { Container, Background, ButtonLink, Logo } from './styles/header.js';
+import {
+  Container,
+  Background,
+  ButtonLink,
+  Logo,
+  Group,
+  Link,
+  SearchInput,
+  Search,
+  Feature,
+  Picture,
+  Profile,
+} from './styles/header.js';
 import { Link as ReachRouterLink } from 'react-router-dom';
 
 export default function Header({ bg = true, children, ...restProps }) {
-  return bg ? <Background {...restProps}>{children}</Background> : { children };
+  return bg ? <Background {...restProps}>{children}</Background> : children;
 }
-
 Header.Container = function HeaderContainer({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 };
