@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Background,
@@ -6,11 +6,13 @@ import {
   Logo,
   Group,
   Link,
-  SearchInput,
-  Search,
   Feature,
-  Picture,
-  Profile,
+  FeatureCallOut,
+  PlayButton,
+  Text,
+  Search,
+  SearchIcon,
+  SearchInput,
 } from './styles/header.js';
 import { Link as ReachRouterLink } from 'react-router-dom';
 
@@ -33,16 +35,26 @@ Header.Group = function HeaderGroup({ children, ...restProps }) {
   return <Group {...restProps}>{children}</Group>;
 };
 
-Header.SearchInput = function HeaderSearchInput({ ...restProps }) {
-  return <SearchInput {...restProps} />;
-};
-
-Header.Search = function HeaderSearch({ children, ...restProps }) {
-  return <Search {...restProps}>{children}</Search>;
-};
-
-Header.SearchIcon = function HeaderSearchIcon({ ...restProps }) {
-  return <SearchIcon {...restProps} />;
+Header.Search = function HeaderSearch({
+  searchTerm,
+  setSearchTerm,
+  ...restProps
+}) {
+  const [searchActive, setSearchActive] = useState(false);
+  const searchIcon = 'public/images/icons/search.png';
+  return (
+    <Search {...restProps}>
+      <SearchIcon onClick={() => setSearchActive(!searchActive)}>
+        <img src='/images/icons/search.png' alt='Search' />
+      </SearchIcon>
+      <SearchInput
+        value={searchTerm}
+        onChange={({ target }) => setSearchTerm(target.value)}
+        placeholder='Search files and series'
+        active={searchActive}
+      />
+    </Search>
+  );
 };
 
 Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
