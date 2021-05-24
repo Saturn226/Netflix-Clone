@@ -1,14 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Header, Loading } from '../components';
+import { Header, Loading, Card, Player } from '../components';
 import * as ROUTES from '../constants/routes';
 import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
 import logo from '../logo.svg';
+import Fuse from 'fuse.js';
 
-export function BrowseContainer() {
+export function BrowseContainer({ slides }) {
+  const [category, setCategory] = useState('series');
   const [profile, setProfile] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
+  const [slideRows, setSlideRows] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const user = {
     displayName: 'Karl',
@@ -21,8 +25,23 @@ export function BrowseContainer() {
     }, 3000);
   }, [user]);
 
-  const [category, setCategory] = useState('series');
-  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fuse = new Fuse(slideRows, {
+      keys: ['data.description', 'data.title', 'data.genre'],
+    });
+    const results = fuse.search(searchTerm).map(({ item }) => item);
+
+    if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+      setSlideRows(results);
+    } else {
+      setSlideRows(slides[category]);
+    }
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setSlideRows(slides[category]);
+  }, [slides, category]);
+
   return profile.displayName ? (
     <>
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
@@ -79,6 +98,34 @@ export function BrowseContainer() {
           <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
       </Header>
+
+      <Card.Group>
+        {slideRows.map((slideItem) => (
+          <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
+            <Card.Title>{slideItem.title}</Card.Title>
+            <Card.Entities>
+              {slideItem.data.map((item) => (
+                <Card.Item key={item.docId} item={item}>
+                  <Card.Image
+                    src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
+                  />
+                  <Card.Meta>
+                    <Card.SubTitle>{item.title}</Card.SubTitle>
+                    <Card.Text>{item.description}</Card.Text>
+                  </Card.Meta>
+                </Card.Item>
+              ))}
+            </Card.Entities>
+            <Card.Feature category={category}>
+              <Player>
+                <Player.Button />
+                <Player.Video />
+              </Player>
+            </Card.Feature>
+          </Card>
+        ))}
+      </Card.Group>
+
       <FooterContainer />
     </>
   ) : (
