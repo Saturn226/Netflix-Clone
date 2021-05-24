@@ -13,6 +13,9 @@ import {
   Search,
   SearchIcon,
   SearchInput,
+  Profile,
+  Dropdown,
+  Picture,
 } from './styles/header.js';
 import { Link as ReachRouterLink } from 'react-router-dom';
 
@@ -41,7 +44,6 @@ Header.Search = function HeaderSearch({
   ...restProps
 }) {
   const [searchActive, setSearchActive] = useState(false);
-  const searchIcon = 'public/images/icons/search.png';
   return (
     <Search {...restProps}>
       <SearchIcon onClick={() => setSearchActive(!searchActive)}>
@@ -61,16 +63,16 @@ Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
   return <ButtonLink {...restProps}>{children}</ButtonLink>;
 };
 
-Header.Picture = function HeaderPicture({ children, ...restProps }) {
-  return <Picture {...restProps}>{children}</Picture>;
+Header.Profile = function HeaderProfile({ children, ...restProps }) {
+  return <Profile {...restProps}>{children}</Profile>;
 };
 
 Header.Dropdown = function HeaderDropdown({ children, ...restProps }) {
   return <Dropdown {...restProps}>{children}</Dropdown>;
 };
 
-Header.Profile = function HeaderProfile({ children, ...restProps }) {
-  return <Profile {...restProps}>{children}</Profile>;
+Header.Picture = function HeaderProfile({ src, ...restProps }) {
+  return <Picture {...restProps} src={`/images/users/${src}.png`} />;
 };
 
 Header.Feature = function HeaderFeature({ children, ...restProps }) {
@@ -84,16 +86,16 @@ Header.FeatureCallOut = function HeaderFeatureCallOut({
   return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
 };
 
-Header.Text = function HeaderText({ children, ...restProps }) {
-  return <Text {...restProps}>{children}</Text>;
-};
-
 Header.Logo = function HeaderLogo({ to, ...restProps }) {
   return (
     <ReachRouterLink to={to}>
       <Logo {...restProps} />
     </ReachRouterLink>
   );
+};
+
+Header.Text = function HeaderText({ children, ...restProps }) {
+  return <Text {...restProps}>{children}</Text>;
 };
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
