@@ -11,11 +11,9 @@ export default function Home() {
       <HeaderContainer>
         <Feature>
           <Feature.Title>
-            Unlimited films, TV programmes and more.
+            An amazing clone written by yours truly! ~Ashley~
           </Feature.Title>
-          <Feature.SubTitle>
-            Watch anywhere. Cancel at any time.
-          </Feature.SubTitle>
+          <Feature.SubTitle>Made with React and Firebase!</Feature.SubTitle>
 
           <OptForm>
             <OptForm.Input placeholder='Email Address' />

@@ -8,6 +8,7 @@ export function HeaderContainer({ children }) {
     <Header>
       <Header.Frame>
         <Header.Logo to={ROUTES.HOME} src={logo} alt='Netflix' />
+        <h3 style={{ color: 'white' }}>Don't sue me!</h3>
         <Header.ButtonLink to={ROUTES.SIGN_IN}>Sign In</Header.ButtonLink>
       </Header.Frame>
       {children}
