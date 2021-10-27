@@ -4,7 +4,18 @@ import { App } from './app';
 import { GlobalStyles } from './global-styles';
 import 'normalize.css';
 import { FirebaseContext } from './context/firebase';
-import { firebase } from './lib/firebase.prod.js';
+import Firebase from 'firebase/app';
+
+const config = {
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+};
+
+const firebase = Firebase.initializeApp(config);
 
 render(
   <>
