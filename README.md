@@ -1,6 +1,9 @@
 # My Netflix Clone
 
-This is a clone of the Netflix website, created while following the Karl Hadwen course on Scrimba.com
+<img width="840" alt="Screen Shot 2021-10-26 at 11 26 58 PM" src="https://user-images.githubusercontent.com/846256/138995063-a2ef7005-9370-4850-a1b9-4d1b3aea17e3.png">
+
+
+This is a clone of the Netflix website, created while following the Karl Hadwen course on [Scrimba.com](scrimba.com)
 
 
 ## Technologies Used
