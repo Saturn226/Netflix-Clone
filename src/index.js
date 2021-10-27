@@ -4,6 +4,8 @@ import { App } from './app';
 import { GlobalStyles } from './global-styles';
 import 'normalize.css';
 import { FirebaseContext } from './context/firebase';
+import Firebase from 'firebase/app';
+
 import 'firebase/firestore';
 import 'firebase/auth';
 const firebase = Firebase.initializeApp(process.env.CONFIG);
