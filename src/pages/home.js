@@ -11,7 +11,7 @@ export default function Home() {
       <HeaderContainer>
         <Feature>
           <Feature.Title>
-            An amazing clone written by yours truly! ~Ashley~
+            An amazing clone written by yours truly! ~Ashley
           </Feature.Title>
           <Feature.SubTitle>Made with React and Firebase!</Feature.SubTitle>
 

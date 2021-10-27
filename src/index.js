@@ -4,20 +4,9 @@ import { App } from './app';
 import { GlobalStyles } from './global-styles';
 import 'normalize.css';
 import { FirebaseContext } from './context/firebase';
-import Firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-
-const config = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-  appId: process.env.appId,
-};
-
-const firebase = Firebase.initializeApp(config);
+const firebase = Firebase.initializeApp(process.env.CONFIG);
 
 render(
   <>
